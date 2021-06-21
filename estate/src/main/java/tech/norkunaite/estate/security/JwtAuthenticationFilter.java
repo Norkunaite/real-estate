@@ -27,6 +27,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		
 		String token = getJwtFromRequest(request);
 		
 		if(StringUtils.hasText(token)&& jwtProvider.validateToken(token)) {
@@ -37,10 +38,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 		}
-		else {
-			response.setStatus(403);
-		}
 		filterChain.doFilter(request, response);
+		
 
 	}
 

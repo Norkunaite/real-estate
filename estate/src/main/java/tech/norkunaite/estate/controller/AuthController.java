@@ -16,7 +16,7 @@ import tech.norkunaite.estate.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins={"http://localhost:3000", "http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 	
 	@Autowired
@@ -31,6 +31,7 @@ public class AuthController {
 	@PostMapping("/login")
 	public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
 		return authService.login(loginRequest);
+		
 
 	}
 

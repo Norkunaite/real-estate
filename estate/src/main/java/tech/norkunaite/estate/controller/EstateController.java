@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import tech.norkunaite.estate.service.LandService;
 
 @RestController
 @RequestMapping("/api/estates")
+@CrossOrigin(origins={"http://localhost:3000", "http://localhost:4200"})
 public class EstateController {
 
 	@Autowired
@@ -32,7 +34,7 @@ public class EstateController {
 
 	@PostMapping("/lands")
 	public ResponseEntity<Land> createLand(@RequestBody Land land) {
-		return new ResponseEntity<Land>(landService.createLand(land), HttpStatus.CREATED);
+		return new ResponseEntity<Land>(landService.createLand(land), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/lands/{id}")
