@@ -1,0 +1,57 @@
+<div class="container justify-content-center">
+    <form class="form-signin" [formGroup]="estateRegisterForm" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 font-weight-normal">Please Register Estate</h1>
+        <div formGroupName="estate">
+            <mat-form-field appearance="fill">
+                <mat-label>Action</mat-label>
+                <mat-select [formControlName]="'action'">
+                    <mat-option value="BUY">
+                        Buy
+                    </mat-option>
+                    <mat-option value="RENT">
+                        Rent
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="form-group">
+                <label for="inputPrice" class="sr-only">Price</label>
+                <input type="text" id="inputPrice" [formControlName]="'price'" class="form-control" placeholder="Price"
+                    required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="sr-only">Description</label>
+                <editor [formControlName]="'decription'" [init]="{plugins: 'link'}"></editor>
+            </div>
+        </div>
+
+        <div formGroupName="address">
+
+            <div class="form-group">
+                <label for="inputDistrictMunicipality" class="sr-only">District Municipality</label>
+                <input type="text" id="inputDistrictMunicipality" [formControlName]="'districtMunicipality'"
+                    class="form-control" placeholder="District Municipality" required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputTown" class="sr-only">Town</label>
+                <input type="text" id="inputTown" [formControlName]="'town'" class="form-control" placeholder="Town"
+                    required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputMicrodistrict" class="sr-only">Microdistrict</label>
+                <input type="text" id="inputMicrodistrict" [formControlName]="'microdistrict'" class="form-control"
+                    placeholder="Microdistrict" required="" autofocus="">
+            </div>
+            <div class="form-group">
+                <label for="inputStreet" class="sr-only">Street</label>
+                <input type="text" id="inputStreet" [formControlName]="'street'" class="form-control"
+                    placeholder="Street" required="" autofocus="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLandArea" class="sr-only">Land Area</label>
+            <input type="text" id="inputLandArea" [formControlName]="'landArea'" class="form-control"
+                placeholder="Land Area" required="" autofocus="">
+        </div>
+        <button class="btn btn-lg btn-block register-btn" type="submit">Register</button>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+.my-card{
+    display: inline-flex;
+    border: hidden;
+    box-shadow: 5px 10px 18px #888888;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.centered-vertically{
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div[ng-reflect-router-link] {
+    cursor: pointer;
+}
+
+h2{
+    text-align: center;
+}

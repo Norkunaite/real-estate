@@ -1,0 +1,15 @@
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+
+                <div class="col-10">
+                    <h2>Real estate <span *ngIf="authService.isAuthenticated()"> - Registry </span></h2>
+                    <p>A warm welcome! The easiest way to buy/sell or rent real estate</p>
+                </div>
+                <div *ngIf="authService.isAuthenticated()" class="col-1">
+                    <button (click)="logout()" class="log-out-btn">Log out</button>
+                </div>
+
+        </div>
+    </div>
+</div>

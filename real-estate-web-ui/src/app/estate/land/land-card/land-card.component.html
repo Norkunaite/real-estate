@@ -1,0 +1,20 @@
+<div class="container">
+    <div>
+        <div class="centered-heading">
+            <h2>All registered estate</h2>
+        </div>
+    </div>
+    <div *ngFor="let land of lands" routerLink="/lands/{{land.id}}" class="row my-card">
+        <img class="my-card-img col-2"
+            src="https://previews.123rf.com/images/latkun/latkun1712/latkun171200130/92172856-empty-transparent-background-seamless-pattern.jpg">
+        <div class="my-card-body col-10 ">
+            <div class="centered-vertically">
+                <h4>{{land.estate.price}}Eur</h4>
+                <p>{{land.estate.price/land.landArea}}</p>
+                <p>{{land.address.districtMunicipality}} district, {{land.address.town}} town,
+                    {{land.address.microdistrict}} microdistrict, {{land.address.street}} street</p>
+                <p>{{land.landArea}} ares</p>
+            </div>
+        </div>
+    </div>
+</div>
