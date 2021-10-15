@@ -14,9 +14,9 @@ import tech.norkunaite.estate.dto.LoginRequest;
 import tech.norkunaite.estate.dto.SignUpRequest;
 import tech.norkunaite.estate.service.AuthService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 	
 	@Autowired

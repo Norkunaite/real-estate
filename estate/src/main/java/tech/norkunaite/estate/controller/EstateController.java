@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.norkunaite.estate.model.Land;
 import tech.norkunaite.estate.service.LandService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/estates")
-@CrossOrigin(origins={"http://localhost:3000", "http://localhost:4200"})
 public class EstateController {
 
 	@Autowired

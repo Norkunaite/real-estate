@@ -22,16 +22,16 @@ public class EstateApplication {
 		SpringApplication.run(EstateApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner demo(LandRepository landRepo, AuthService authService) {
-		return (args) -> {
-
-			landRepo.save(new Land(1l, new Estate(Action.BUY, new BigDecimal(5), "puiki grycia"),
-					new Address("Vilniaus m", "Vilnius", "rasos", "rasu g"), new BigDecimal(5)));
-			
-			authService.signup(new SignUpRequest("test", "test", "test"));
-
-		};
-	}
+//	@Bean
+//	public CommandLineRunner demo(LandRepository landRepo, AuthService authService) {
+//		return (args) -> {
+//
+//			landRepo.save(new Land(1l, new Estate(Action.BUY, new BigDecimal(5), "puiki grycia"),
+//					new Address("Vilniaus m", "Vilnius", "rasos", "rasu g"), new BigDecimal(5)));
+//			
+//			authService.signup(new SignUpRequest("test", "test", "test"));
+//
+//		};
+//	}
 
 }
