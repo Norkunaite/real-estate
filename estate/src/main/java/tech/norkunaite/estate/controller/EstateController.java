@@ -2,6 +2,8 @@ package tech.norkunaite.estate.controller;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +35,8 @@ public class EstateController {
 	}
 
 	@PostMapping("/lands")
-	public ResponseEntity<Land> createLand(@RequestBody Land land) {
-		return new ResponseEntity<Land>(landService.createLand(land), HttpStatus.OK);
+	public ResponseEntity<Land> createLand(@Valid @RequestBody Land land) {
+		return new ResponseEntity<Land>(landService.createLand(land), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/lands/{id}")
