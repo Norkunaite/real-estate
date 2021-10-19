@@ -1,75 +1,58 @@
 package tech.norkunaite.estate.validation.embeddables;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import tech.norkunaite.estate.embeddables.LifeEstate;
+import tech.norkunaite.estate.validation.EstateValidator;
 
 public class LifeEstateValidationTest {
 
-	private Validator validator;
+	private EstateValidator validator;
+	private LifeEstate lifeEstate;
 
 	@BeforeEach
 	public void setUp() {
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		validator = factory.getValidator();
+		validator = new EstateValidator();
+		lifeEstate = new LifeEstate(5, 5, 5);
 	}
 
 	@Test
 	public void testBedroomZero() {
-		LifeEstate lifeEstate = new LifeEstate(0, 5, 5);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's bedroom quantity cannot be zero");
+		lifeEstate.setBedroom(0);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's bedroom quantity cannot be zero");
 	}
 
 	@Test
 	public void testBedroomNegative() {
-		LifeEstate lifeEstate = new LifeEstate(-5, 5, 5);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's bedroom quantity cannot be negative");
+		lifeEstate.setBedroom(-5);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's bedroom quantity cannot be negative");
 	}
-	
+
 	@Test
 	public void testFloorZero() {
-		LifeEstate lifeEstate = new LifeEstate(5, 0, 5);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's floor cannot be zero");
+		lifeEstate.setFloor(0);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's floor cannot be zero");
 	}
 
 	@Test
 	public void testFloorNegative() {
-		LifeEstate lifeEstate = new LifeEstate(5, -5, 5);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's floor cannot be negative");
+		lifeEstate.setFloor(-5);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's floor cannot be negative");
 	}
-	
+
 	@Test
 	public void testMaxFloorQuantityZero() {
-		LifeEstate lifeEstate = new LifeEstate(5, 5, 0);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's floor quantity cannot be zero");
+		lifeEstate.setMaxFloor(0);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's floor quantity cannot be zero");
 	}
 
 	@Test
 	public void testMaxFloorQuantityNegative() {
-		LifeEstate lifeEstate = new LifeEstate(5, 5, -5);
-
-		Set<ConstraintViolation<LifeEstate>> violations = validator.validate(lifeEstate);
-		assertFalse(violations.isEmpty(), "Life estate's floor quantity cannot be negative");
+		lifeEstate.setMaxFloor(-5);
+		assertTrue(validator.validatesSuccessfully(lifeEstate), "Life estate's floor quantity cannot be negative");
 	}
 
 }
