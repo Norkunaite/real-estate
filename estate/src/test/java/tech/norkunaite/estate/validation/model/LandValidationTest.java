@@ -1,22 +1,14 @@
 package tech.norkunaite.estate.validation.model;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import tech.norkunaite.estate.embeddables.Address;
 import tech.norkunaite.estate.embeddables.Estate;
-import tech.norkunaite.estate.embeddables.LifeEstate;
 import tech.norkunaite.estate.enums.Action;
 import tech.norkunaite.estate.model.Land;
 import tech.norkunaite.estate.validation.EstateValidator;

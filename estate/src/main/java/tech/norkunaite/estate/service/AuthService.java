@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import tech.norkunaite.estate.dto.AuthenticationResponse;
 import tech.norkunaite.estate.dto.LoginRequest;
 import tech.norkunaite.estate.dto.SignUpRequest;
+import tech.norkunaite.estate.exceptions.PasswordMatchException;
 import tech.norkunaite.estate.model.User;
 import tech.norkunaite.estate.repository.UserRepository;
 import tech.norkunaite.estate.security.JwtProvider;
@@ -30,11 +31,18 @@ public class AuthService {
 	@Autowired
 	private JwtProvider jwtProvider;
 
-	public void signup(SignUpRequest signUpRequest) {
-		User user = new User(signUpRequest);
-		user.setPassword(encodePassword(signUpRequest.getPassword()));
+	public void signup(SignUpRequest signUpRequest) throws PasswordMatchException {
+		
+		if (signUpRequest.passwordsMatch() ) {
+			User user = new User(signUpRequest);
+			user.setPassword(encodePassword(signUpRequest.getPassword()));
 
-		userRepository.save(user);
+			userRepository.save(user);
+
+		} else {
+
+			throw new PasswordMatchException("Passwords do not match");
+		}
 	}
 
 	public AuthenticationResponse login(LoginRequest loginRequest) {

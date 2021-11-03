@@ -1,5 +1,7 @@
 package tech.norkunaite.estate.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.norkunaite.estate.dto.AuthenticationResponse;
 import tech.norkunaite.estate.dto.LoginRequest;
 import tech.norkunaite.estate.dto.SignUpRequest;
+import tech.norkunaite.estate.exceptions.PasswordMatchException;
 import tech.norkunaite.estate.service.AuthService;
 
 @CrossOrigin
@@ -23,7 +26,7 @@ public class AuthController {
 	private AuthService authService;
 	
 	@PostMapping("/signup")
-	public ResponseEntity<Object> signup(@RequestBody SignUpRequest signUpRequest) {
+	public ResponseEntity<Object> signup(@Valid @RequestBody SignUpRequest signUpRequest) throws PasswordMatchException {
 		authService.signup(signUpRequest);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
